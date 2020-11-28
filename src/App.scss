@@ -1,0 +1,12 @@
+@import './components/nav/Nav.scss';
+// @import './components/'
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+  .wrapper {
+    display: flex;
+    flex-direction: row ;
+  }
+}
