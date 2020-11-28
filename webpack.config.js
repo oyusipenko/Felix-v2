@@ -17,7 +17,7 @@ module.exports = (env) => {
   const getPlugins = () => {
     const plugins = [
       new HtmlWebpackPlugin({
-        title: "React.JS boilerplate",
+        title: "Felix v2",
         template: "src/index.html",
       }),
     ];
