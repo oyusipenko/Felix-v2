@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { faHome, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -6,15 +7,30 @@ export default function Nav() {
   return (
     <div className="nav">
       <div className="left-block">
-        <FontAwesomeIcon icon={faBars} />
-        <FontAwesomeIcon icon={faHome} />
+        <i className="icon">
+          <FontAwesomeIcon icon={faBars} />
+        </i>
+        <i className="icon">
+          <Link to="/home">
+            <FontAwesomeIcon icon={faHome} />
+          </Link>
+        </i>
       </div>
-      <div className="center-block">
-        <ul>
-          <li>Задачи</li>
-          <li>Цели</li>
-          <li>Заметки</li>
-          <li>Календарь</li>
+      <div className="menu-block">
+        <ul className="menu-list">
+          <div className="menu-button-mobile">Menu</div>
+          <li>
+            <Link to="/todo">To-Do</Link>
+          </li>
+          <li>
+            <Link to="/targets">Targets</Link>
+          </li>
+          <li>
+            <Link to="/notes">Notes</Link>
+          </li>
+          <li>
+            <Link to="/calendar">Calendar</Link>
+          </li>
         </ul>
       </div>
       <div className="right-block">
