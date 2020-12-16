@@ -1,18 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+
+  .main-container {
+    display: flex;
+    flex-direction: row;
+
+    .side-bar {
+      width: 305px;
+      background-color: #fafafa;
+      height: calc(100vh - 50px);
+      ul {
+        margin: 0;
+        padding: 35px;
+        list-style-type: none;
+        text-align: center;
+        li {
+          width: 100%;
+          padding: 10px 0;
+          margin-bottom: 20px;
+          border-top: 1px solid #a0a0a0;
+          border-bottom: 1px solid #a0a0a0;
+          color: #000;
+          font-weight: 400;
+          outline: none;
+          transition: 0.5s;
+          text-transform: uppercase;
+
+          &:hover {
+            background-color: #ff9000;
+            cursor: pointer;
+          }
+
+          &:active {
+            background: linear-gradient(#ffb555, #ff9000) #fdbd32;
+          }
+        }
+      }
+    }
+  }
+}
+
 @import "./components/nav/Nav.scss";
+@import "./components/sideBar/SideBar.scss";
 @import "./components/home/Home.scss";
 @import "./components/to-do/ToDo.scss";
 @import "./components/targets/Target.scss";
 @import "./components/notes/Notes.scss";
 @import "./components/calendar/Calendar.scss";
-
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-
-  .main-container {
-    display: flex;
-    flex-direction: column;
-  }
-}

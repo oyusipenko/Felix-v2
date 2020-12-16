@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 import { faHome, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Nav() {
+export default function Nav({ toogleSideBar, viewNav }) {
   return (
     <div className="nav">
       <div className="left-block">
         <i className="icon">
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon
+            icon={faBars}
+            onClick={() => toogleSideBar(viewNav)}
+          />
         </i>
         <i className="icon">
-          <Link to="/home">
+          <Link to="/">
             <FontAwesomeIcon icon={faHome} />
           </Link>
         </i>

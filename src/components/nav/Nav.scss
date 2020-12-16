@@ -69,11 +69,19 @@
           text-align: center;
           text-transform: uppercase;
           transition: 0.5s;
+          font-weight: 700;
 
           &:hover {
             background: rgb(255, 206, 143);
             cursor: pointer;
           }
+          &:active {
+            background: linear-gradient(#ffb555, #ff9000) #fdbd32;
+          }
+        }
+        a {
+          text-decoration: none;
+          color: #000;
         }
       }
     }
