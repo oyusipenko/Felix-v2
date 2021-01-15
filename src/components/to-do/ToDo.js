@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideBarTodo from "./SideBarTodo";
+import SideBar from "../sideBar/SideBar";
 import TodoContainer from "./TodoContainer";
 
 function ToDo({ viewNav }) {
@@ -45,7 +45,12 @@ function ToDo({ viewNav }) {
 
   return (
     <>
-      <SideBarTodo changeView={changeView} view={view} viewNav={viewNav} />
+      <SideBar viewNav={viewNav}>
+        <ul>
+          <li onClick={() => changeView("inbox")}>Inbox Tasks</li>
+          <li onClick={() => changeView("done")}>Done Tasks</li>
+        </ul>
+      </SideBar>
       <div className="todo">
         <div className="wrapper">
           <h1 className="todo__title">Todo List</h1>
