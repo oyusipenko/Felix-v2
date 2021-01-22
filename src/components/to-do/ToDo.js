@@ -1,5 +1,5 @@
-import React, { useState, useRef, useContext } from "react";
-import { AppContext } from "../../appContext";
+import React, { useState, useRef } from "react";
+import { AppContext } from "../../AppContext";
 import SideBar from "../sideBar/SideBar";
 import TodoContainer from "./TodoContainer";
 
@@ -7,7 +7,6 @@ function ToDo() {
   const [todos, setTodos] = useState([]);
   const [view, setView] = useState("inbox");
   const inputRef = useRef(null);
-  const { viewNav } = useContext(AppContext);
 
   const addTodo = (event) => {
     event.preventDefault();

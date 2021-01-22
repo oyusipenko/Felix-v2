@@ -2,8 +2,16 @@ import React, { Component } from "react";
 const AppContext = React.createContext();
 
 class AppContextProvider extends Component {
-  state = {
-    viewNav: true,
+  constructor(props) {
+    super(props);
+    this.state = this.getDefaultState();
+  }
+
+  getDefaultState = () => {
+    return {
+      viewNav: true,
+      toggleNav: this.toggleNav,
+    };
   };
 
   toggleNav = () => {
@@ -16,12 +24,7 @@ class AppContextProvider extends Component {
 
   render() {
     return (
-      <AppContext.Provider
-        value={{
-          viewNav: this.state.viewNav,
-          toggleNav: this.toggleNav,
-        }}
-      >
+      <AppContext.Provider value={this.state}>
         {this.props.children}
       </AppContext.Provider>
     );

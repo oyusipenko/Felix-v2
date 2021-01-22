@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AppContext } from "../../appContext";
+import { AppContext } from "../../AppContext";
 
 export default function SideBar(props) {
   const { viewNav } = useContext(AppContext);
