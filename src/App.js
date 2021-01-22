@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import Home from "./components/home/Home";
@@ -13,7 +13,7 @@ export default function App() {
       <Nav />
       <div className="main-container">
         <Switch>
-          <Route exact path="/">
+          <Route path="/" exact>
             <Home />
           </Route>
           <Route path="/todo">
