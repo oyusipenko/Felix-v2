@@ -8,6 +8,7 @@ export default function TodoContainer({
   todos,
   completeTodo,
   checkTodosLength,
+  inputRef,
 }) {
   switch (view) {
     case "inbox":
@@ -18,6 +19,7 @@ export default function TodoContainer({
           todos={todos}
           completeTodo={completeTodo}
           checkTodosLength={checkTodosLength}
+          inputRef={inputRef}
         />
       );
     case "done":

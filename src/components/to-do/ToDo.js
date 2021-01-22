@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useContext } from "react";
+import { AppContext } from "../../appContext";
 import SideBar from "../sideBar/SideBar";
 import TodoContainer from "./TodoContainer";
 
-function ToDo({ viewNav }) {
+function ToDo() {
   const [todos, setTodos] = useState([]);
   const [view, setView] = useState("inbox");
+  const inputRef = useRef(null);
+  const { viewNav } = useContext(AppContext);
 
   const addTodo = (event) => {
     event.preventDefault();
+    console.log(event);
     if (event.target.newTodo.value === "") {
+      inputRef.current.focus();
       return null;
     }
     const newTodo = {
@@ -19,6 +24,7 @@ function ToDo({ viewNav }) {
     };
     event.target.newTodo.value = "";
     setTodos([...todos, newTodo]);
+    inputRef.current.focus();
   };
 
   const completeTodo = (id) => {
@@ -45,7 +51,7 @@ function ToDo({ viewNav }) {
 
   return (
     <>
-      <SideBar viewNav={viewNav}>
+      <SideBar>
         <ul>
           <li onClick={() => changeView("inbox")}>Inbox Tasks</li>
           <li onClick={() => changeView("done")}>Done Tasks</li>
@@ -60,6 +66,7 @@ function ToDo({ viewNav }) {
             addTodo={addTodo}
             completeTodo={completeTodo}
             checkTodosLength={checkTodosLength}
+            inputRef={inputRef}
           />
         </div>
       </div>

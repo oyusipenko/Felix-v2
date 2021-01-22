@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import Home from "./components/home/Home";
@@ -8,21 +8,16 @@ import Notes from "./components/notes/Notes";
 import Calendar from "./components/calendar/Calenar";
 
 export default function App() {
-  const [viewNav, setViewNav] = useState(true);
-
-  const toogleSideBar = (viewNav) => {
-    setViewNav(!viewNav);
-  };
   return (
     <div className="app">
-      <Nav toogleSideBar={toogleSideBar} viewNav={viewNav} />
+      <Nav />
       <div className="main-container">
         <Switch>
-          <Route path="/" exact={true}>
+          <Route exact path="/">
             <Home />
           </Route>
           <Route path="/todo">
-            <ToDo viewNav={viewNav} />
+            <ToDo />
           </Route>
           <Route path="/targets">
             <Targets />

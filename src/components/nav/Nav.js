@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../appContext";
 import { faHome, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Nav({ toogleSideBar, viewNav }) {
+export default function Nav() {
+  const { toggleNav } = useContext(AppContext);
   return (
     <div className="nav">
       <div className="left-block">
         <i className="icon">
-          <FontAwesomeIcon
-            icon={faBars}
-            onClick={() => toogleSideBar(viewNav)}
-          />
+          <FontAwesomeIcon icon={faBars} onClick={() => toggleNav()} />
         </i>
         <i className="icon">
           <Link to="/">
