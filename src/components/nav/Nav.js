@@ -22,7 +22,7 @@ export default function Nav() {
         <ul className="menu-list">
           <div className="menu-button-mobile">Menu</div>
           <li>
-            <Link to="/todo">To-Do</Link>
+            <Link to="/todo/inbox">To-Do</Link>
           </li>
           <li>
             <Link to="/targets">Targets</Link>

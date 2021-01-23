@@ -1,11 +1,14 @@
 import React, { useState, useRef } from "react";
-import { AppContext } from "../../AppContext";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import MainContainer from "../includes/MainContainer";
 import SideBar from "../sideBar/SideBar";
-import TodoContainer from "./TodoContainer";
+import TodoDone from "./todoDone/TodoDone";
+import TodoInbox from "./todoInbox/TodoInbox";
 
 function ToDo() {
   const [todos, setTodos] = useState([]);
-  const [view, setView] = useState("inbox");
+  const { todoSection } = useParams();
   const inputRef = useRef(null);
 
   const addTodo = (event) => {
@@ -44,31 +47,43 @@ function ToDo() {
     });
   };
 
-  const changeView = (view) => {
-    setView(view);
-  };
-
   return (
     <>
       <SideBar>
         <ul>
-          <li onClick={() => changeView("inbox")}>Inbox Tasks</li>
-          <li onClick={() => changeView("done")}>Done Tasks</li>
+          <li>
+            <Link to="/todo/inbox">Inbox Tasks</Link>
+          </li>
+          <li>
+            <Link to="/todo/done">Done Tasks</Link>
+          </li>
         </ul>
       </SideBar>
-      <div className="todo">
-        <div className="wrapper">
-          <h1 className="todo__title">Todo List</h1>
-          <TodoContainer
-            view={view}
-            todos={todos}
-            addTodo={addTodo}
-            completeTodo={completeTodo}
-            checkTodosLength={checkTodosLength}
-            inputRef={inputRef}
-          />
-        </div>
-      </div>
+      <MainContainer>
+        {(() => {
+          switch (todoSection) {
+            case "inbox":
+              return (
+                <TodoInbox
+                  view={todoSection}
+                  addTodo={addTodo}
+                  todos={todos}
+                  completeTodo={completeTodo}
+                  checkTodosLength={checkTodosLength}
+                  inputRef={inputRef}
+                />
+              );
+            case "done":
+              return (
+                <TodoDone
+                  view={todoSection}
+                  todos={todos}
+                  checkTodosLength={checkTodosLength}
+                />
+              );
+          }
+        })()}
+      </MainContainer>
     </>
   );
 }

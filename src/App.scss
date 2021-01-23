@@ -8,12 +8,13 @@
   display: flex;
   flex-direction: column;
 
-  .main-container {
+  main {
     display: flex;
     flex-direction: row;
   }
 }
 
+// COMPONENTS
 @import "./components/nav/Nav.scss";
 @import "./components/sideBar/SideBar.scss";
 @import "./components/home/Home.scss";
@@ -21,3 +22,6 @@
 @import "./components/targets/Target.scss";
 @import "./components/notes/Notes.scss";
 @import "./components/calendar/Calendar.scss";
+
+// INCLUDES
+@import "./components/includes/MainContainer.scss";
