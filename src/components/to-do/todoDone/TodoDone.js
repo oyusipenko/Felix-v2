@@ -10,7 +10,6 @@ export default function TodoDone({
 }) {
   return (
     <>
-      <h1 className="todo__title">Todo List</h1>
       <h2 className="todo__description">Done todos</h2>
       {checkTodosLength(view) ? null : <NoTodoBlock view={view} />}
       <TodoList view={view} todos={todos} completeTodo={completeTodo} />

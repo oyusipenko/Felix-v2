@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Nav() {
   const { toggleNav } = useContext(AppContext);
   return (
-    <div className="nav">
+    <header>
       <div className="left-block">
         <i className="icon">
           <FontAwesomeIcon icon={faBars} onClick={() => toggleNav()} />
@@ -38,6 +38,6 @@ export default function Nav() {
       <div className="right-block">
         <FontAwesomeIcon icon={faCog} />
       </div>
-    </div>
+    </header>
   );
 }

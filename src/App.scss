@@ -16,7 +16,6 @@
 
 // COMPONENTS
 @import "./components/nav/Nav.scss";
-@import "./components/sideBar/SideBar.scss";
 @import "./components/home/Home.scss";
 @import "./components/to-do/ToDo.scss";
 @import "./components/targets/Target.scss";
@@ -24,4 +23,5 @@
 @import "./components/calendar/Calendar.scss";
 
 // INCLUDES
-@import "./components/includes/MainContainer.scss";
+@import "./components/includes/mainContainer/MainContainer.scss";
+@import "./components/includes/sideBar/SideBar.scss";

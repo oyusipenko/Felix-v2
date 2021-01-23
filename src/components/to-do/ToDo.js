@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import MainContainer from "../includes/MainContainer";
-import SideBar from "../sideBar/SideBar";
+import MainContainer from "../includes/mainContainer/MainContainer";
+import SideBar from "../includes/sideBar/SideBar";
 import TodoDone from "./todoDone/TodoDone";
 import TodoInbox from "./todoInbox/TodoInbox";
 
@@ -60,6 +60,7 @@ function ToDo() {
         </ul>
       </SideBar>
       <MainContainer>
+        <h1 className="todo__title">TO-DO</h1>
         {(() => {
           switch (todoSection) {
             case "inbox":
