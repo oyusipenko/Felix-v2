@@ -1,16 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../TodoContext";
 
-export default function NoTodoBlock({ view }) {
+export default function NoTodoBlock(props) {
+  const { isTodoCategoryEmpty } = useContext(TodoContext);
   return (
     <h3 className="todo__no-todo">
-      {(() => {
-        switch (view) {
-          case "inbox":
-            return "Please add new todos";
-          case "done":
-            return "Please complete some todos";
-        }
-      })()}
+      {!isTodoCategoryEmpty(props.todoCategory) && props.children}
     </h3>
   );
 }

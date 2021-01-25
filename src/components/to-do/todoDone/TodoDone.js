@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import TodoList from "../includes/TodoList";
 import NoTodoBlock from "../includes/NoTodoBlock";
 
-export default function TodoDone({
-  view,
-  todos,
-  completeTodo,
-  checkTodosLength,
-}) {
+export default function TodoDone({ todoCategory }) {
   return (
     <>
       <h2 className="todo__description">Done todos</h2>
-      {checkTodosLength(view) ? null : <NoTodoBlock view={view} />}
-      <TodoList view={view} todos={todos} completeTodo={completeTodo} />
+      <NoTodoBlock todoCategory={todoCategory}>
+        There is no completed todos...
+      </NoTodoBlock>
+      <TodoList view={todoCategory} />
     </>
   );
 }

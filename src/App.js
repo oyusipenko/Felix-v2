@@ -11,6 +11,7 @@ import ToDo from "./components/to-do/ToDo";
 import Targets from "./components/targets/Targets";
 import Notes from "./components/notes/Notes";
 import Calendar from "./components/calendar/Calenar";
+import { TodoContextProvider } from "./components/to-do/TodoContext";
 
 export default function App() {
   return (
@@ -23,7 +24,9 @@ export default function App() {
               <Home />
             </Route>
             <Route path="/todo/:todoSection">
-              <ToDo />
+              <TodoContextProvider>
+                <ToDo />
+              </TodoContextProvider>
             </Route>
             <Route path="/targets">
               <Targets />
