@@ -36,7 +36,6 @@ function TodoContextProvider(props) {
     };
     event.target.newTodo.value = "";
     setTodos((todos) => [...todos, newTodo]);
-
     inputRef.current.focus();
   }
 
