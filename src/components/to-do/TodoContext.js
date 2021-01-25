@@ -1,67 +1,65 @@
-import React, { Component } from "react";
+import React, { useState, useRef } from "react";
+import { useParams } from "react-router-dom";
+
 const TodoContext = React.createContext();
 
-class TodoContextProvider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = this.getDefaultState();
+function TodoContextProvider(props) {
+  const [todos, setTodos] = useState([]);
+  const { todoSection } = useParams();
+  const inputRef = useRef(null);
+
+  const state = getDefaultState();
+
+  function getDefaultState() {
+    return {
+      todos: todos,
+      addTodo: addTodo,
+      completeTodo: completeTodo,
+      isTodoCategoryEmpty: isTodoCategoryEmpty,
+      inputRef: inputRef,
+      todoSection: todoSection,
+    };
   }
 
-  getDefaultState = () => {
-    return {
-      todos: [],
-      addTodo: this.addTodo,
-      completeTodo: this.completeTodo,
-      isTodoCategoryEmpty: this.isTodoCategoryEmpty,
-    };
-  };
-
-  addTodo = (event) => {
+  function addTodo(event) {
     event.preventDefault();
-    console.log(event);
+
     if (event.target.newTodo.value === "") {
-      // this.inputRef.current.focus();
+      inputRef.current.focus();
       return null;
     }
     const newTodo = {
-      index: this.state.todos.length,
+      index: state.todos.length,
       value: event.target.newTodo.value,
       status: "inbox",
       date: new Date(),
     };
     event.target.newTodo.value = "";
-    this.setState(({ todos }) => ({
-      todos: [...todos, newTodo],
-    }));
-    // this.inputRef.current.focus();
-  };
+    setTodos((todos) => [...todos, newTodo]);
 
-  completeTodo = (id) => {
-    const updatedTodos = this.state.todos.map((todo) => {
+    inputRef.current.focus();
+  }
+
+  function completeTodo(id) {
+    const updatedTodos = todos.map((todo) => {
       if (todo.index === id) {
         return { ...todo, status: "done" };
       }
       return todo;
     });
-    this.setState({ todos: [...updatedTodos] });
-  };
+    setTodos([...updatedTodos]);
+  }
 
-  isTodoCategoryEmpty = (todoCategory) => {
-    return this.state.todos.find((todo) => {
+  function isTodoCategoryEmpty(todoCategory) {
+    return todos.find((todo) => {
       if (todo.status === todoCategory) {
-        console.log(todoCategory);
         return true;
       }
     });
-  };
-
-  render() {
-    return (
-      <TodoContext.Provider value={this.state}>
-        {this.props.children}
-      </TodoContext.Provider>
-    );
   }
+  return (
+    <TodoContext.Provider value={state}>{props.children}</TodoContext.Provider>
+  );
 }
 
 export { TodoContextProvider, TodoContext };

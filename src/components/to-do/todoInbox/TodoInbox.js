@@ -3,8 +3,8 @@ import { TodoContext } from "../TodoContext";
 import NoTodoBlock from "../includes/NoTodoBlock";
 import TodoList from "../includes/TodoList";
 
-export default function TodoInbox({ todoCategory, inputRef }) {
-  const { addTodo } = useContext(TodoContext);
+export default function TodoInbox() {
+  const { addTodo, inputRef } = useContext(TodoContext);
   return (
     <>
       <h2 className="todo__description">Inbox todos</h2>
@@ -19,10 +19,8 @@ export default function TodoInbox({ todoCategory, inputRef }) {
           <button>Add Task</button>
         </form>
       </div>
-      <NoTodoBlock todoCategory={todoCategory}>
-        There is no active todos...
-      </NoTodoBlock>
-      <TodoList view={todoCategory} />
+      <NoTodoBlock>There is no active todos...</NoTodoBlock>
+      <TodoList />
     </>
   );
 }

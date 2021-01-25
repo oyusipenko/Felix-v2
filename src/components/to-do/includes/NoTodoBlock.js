@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { TodoContext } from "../TodoContext";
 
 export default function NoTodoBlock(props) {
-  const { isTodoCategoryEmpty } = useContext(TodoContext);
+  const { isTodoCategoryEmpty, todoSection } = useContext(TodoContext);
   return (
     <h3 className="todo__no-todo">
-      {!isTodoCategoryEmpty(props.todoCategory) && props.children}
+      {!isTodoCategoryEmpty(todoSection) && props.children}
     </h3>
   );
 }

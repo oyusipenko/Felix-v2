@@ -1,15 +1,11 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import MainContainer from "../includes/mainContainer/MainContainer";
 import SideBar from "../includes/sideBar/SideBar";
 import TodoDone from "./todoDone/TodoDone";
 import TodoInbox from "./todoInbox/TodoInbox";
 
 function ToDo() {
-  const { todoSection } = useParams();
-  const inputRef = useRef(null);
-
   return (
     <>
       <SideBar>
@@ -26,10 +22,10 @@ function ToDo() {
         <h1 className="todo__title">TO-DO</h1>
         <Switch>
           <Route path="/todo/inbox">
-            <TodoInbox todoCategory={todoSection} inputRef={inputRef} />
+            <TodoInbox />
           </Route>
           <Route path="/todo/done">
-            <TodoDone todoCategory={todoSection} />
+            <TodoDone />
           </Route>
         </Switch>
       </MainContainer>
