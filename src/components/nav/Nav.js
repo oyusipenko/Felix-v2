@@ -1,43 +1,46 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { AppContext } from "../../AppContext";
-import { faHome, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import NavMenu from "./NavMenu";
+import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import MenuIcon from "@material-ui/icons/Menu";
+import SettingsIcon from "@material-ui/icons/Settings";
+
+const useStyles = makeStyles(() => ({
+  root: {
+    flexGrow: 1,
+  },
+  toolBar: {
+    justifyContent: "space-between",
+  },
+}));
 
 export default function Nav() {
   const { toggleNav } = useContext(AppContext);
+  const classes = useStyles();
+
   return (
-    <header>
-      <div className="left-block">
-        <i className="icon">
-          <FontAwesomeIcon icon={faBars} onClick={() => toggleNav()} />
-        </i>
-        <i className="icon">
-          <Link to="/">
-            <FontAwesomeIcon icon={faHome} />
-          </Link>
-        </i>
+    <>
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar className={classes.toolBar}>
+            <div>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={() => toggleNav()}
+              >
+                <MenuIcon />
+              </IconButton>
+            </div>
+            <NavMenu />
+            <IconButton edge="end" color="inherit" aria-label="settings">
+              <SettingsIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
       </div>
-      <div className="menu-block">
-        <ul className="menu-list">
-          <div className="menu-button-mobile">Menu</div>
-          <li>
-            <Link to="/todo/inbox">To-Do</Link>
-          </li>
-          <li>
-            <Link to="/targets">Targets</Link>
-          </li>
-          <li>
-            <Link to="/notes">Notes</Link>
-          </li>
-          <li>
-            <Link to="/calendar">Calendar</Link>
-          </li>
-        </ul>
-      </div>
-      <div className="right-block">
-        <FontAwesomeIcon icon={faCog} />
-      </div>
-    </header>
+    </>
   );
 }
