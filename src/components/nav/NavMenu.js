@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Tabs, Tab, Button, Menu, MenuItem, Hidden } from "@material-ui/core";
+import {
+  Tabs,
+  Tab,
+  Button,
+  Menu,
+  MenuItem,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -13,10 +21,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavMenu() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [currentTab, setCurrentTab] = useState(0);
   const history = useHistory();
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const menuItems = [
+    {
+      id: 0,
+      menuTitle: "Home",
+      pageURL: "/",
+    },
+    {
+      id: 1,
+      menuTitle: "To-Do",
+      pageURL: "todo/inbox",
+    },
+    {
+      id: 2,
+      menuTitle: "Targets",
+      pageURL: "targets",
+    },
+    {
+      id: 3,
+      menuTitle: "Notes",
+      pageURL: "notes",
+    },
+    {
+      id: 4,
+      menuTitle: "Calendar",
+      pageURL: "calendar",
+    },
+  ];
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -26,62 +64,57 @@ export default function NavMenu() {
     setAnchorEl(null);
   };
 
-  const handleMenu = (value) => {
+  const handleMenu = (id, pageURL) => {
     history.replace("");
-    history.push(tabNameToIndex[value]);
-    setValue(value);
+    history.push(pageURL);
+    setCurrentTab(id);
     setAnchorEl(null);
-  };
-
-  const [value, setValue] = React.useState(0);
-  const tabNameToIndex = {
-    0: "/",
-    1: "todo/inbox",
-    2: "targets",
-    3: "notes",
-    4: "calendar",
-  };
-  const handleChange = (event, newValue) => {
-    history.replace("");
-    history.push(tabNameToIndex[newValue]);
-    setValue(newValue);
   };
 
   return (
     <>
-      <Hidden mdUp>
-        <Button
-          aria-controls="simple-menu"
-          aria-haspopup="true"
-          onClick={handleClick}
-          variant="contained"
-          color="secondary"
-        >
-          Open Menu
-        </Button>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={() => handleMenu(0)}>Home</MenuItem>
-          <MenuItem onClick={() => handleMenu(1)}>To-Do</MenuItem>
-          <MenuItem onClick={() => handleMenu(2)}>Targets</MenuItem>
-          <MenuItem onClick={() => handleMenu(3)}>Notes</MenuItem>
-          <MenuItem onClick={() => handleMenu(4)}>Targets</MenuItem>
-        </Menu>
-      </Hidden>
-      <Hidden smDown>
-        <Tabs className={classes.navBar} value={value} onChange={handleChange}>
-          <Tab label="Home" />
-          <Tab label="To-Do" />
-          <Tab label="Targets" />
-          <Tab label="Notes" />
-          <Tab label="Calendar" />
+      {isMobile ? (
+        <>
+          <Button
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+            variant="contained"
+            color="secondary"
+          >
+            Open Menu
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            {menuItems.map((menuItem) => {
+              const { id, menuTitle, pageURL } = menuItem;
+              return (
+                <MenuItem key={id} onClick={() => handleMenu(id, pageURL)}>
+                  {menuTitle}
+                </MenuItem>
+              );
+            })}
+          </Menu>
+        </>
+      ) : (
+        <Tabs className={classes.navBar} value={currentTab}>
+          {menuItems.map((menuItem) => {
+            const { id, menuTitle, pageURL } = menuItem;
+            return (
+              <Tab
+                key={id}
+                label={menuTitle}
+                onClick={() => handleMenu(id, pageURL)}
+              />
+            );
+          })}
         </Tabs>
-      </Hidden>
+      )}
     </>
   );
 }
