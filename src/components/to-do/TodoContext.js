@@ -21,22 +21,33 @@ function TodoContextProvider(props) {
     };
   }
 
-  function addTodo(event) {
-    event.preventDefault();
+  // function addTodo(event) {
+  //   console.log(event);
+  //   event.preventDefault();
 
-    if (event.target.newTodo.value === "") {
-      inputRef.current.focus();
-      return null;
-    }
+  //   if (event.target.newTodo.value === "") {
+  //     inputRef.current.focus();
+  //     return null;
+  //   }
+  //   const newTodo = {
+  //     index: state.todos.length,
+  //     value: event.target.newTodo.value,
+  //     status: "inbox",
+  //     date: new Date(),
+  //   };
+  //   event.target.newTodo.value = "";
+  //   setTodos((todos) => [...todos, newTodo]);
+  //   inputRef.current.focus();
+  // }
+
+  function addTodo({ todoName }) {
     const newTodo = {
       index: state.todos.length,
-      value: event.target.newTodo.value,
+      value: todoName,
       status: "inbox",
       date: new Date(),
     };
-    event.target.newTodo.value = "";
     setTodos((todos) => [...todos, newTodo]);
-    inputRef.current.focus();
   }
 
   function completeTodo(id) {
