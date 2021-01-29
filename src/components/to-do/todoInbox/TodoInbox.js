@@ -4,7 +4,7 @@ import NoTodoBlock from "../includes/NoTodoBlock";
 import TodoList from "../includes/TodoList";
 
 import { Formik, Form, Field } from "formik";
-import { Button, Box } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 
