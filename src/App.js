@@ -12,13 +12,30 @@ import Targets from "./components/targets/Targets";
 import Notes from "./components/notes/Notes";
 import Calendar from "./components/calendar/Calenar";
 import { TodoContextProvider } from "./components/to-do/TodoContext";
+import { useTheme } from "@material-ui/core";
+
+import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}));
 
 export default function App() {
+  const classes = useStyles();
   return (
-    <div className="app">
-      <Router>
+    <Router>
+      <div className={classes.root}>
         <Nav />
-        <main>
+        <main className={classes.content}>
+          <Toolbar />
           <Switch>
             <Route path="/" exact>
               <Home />
@@ -40,7 +57,7 @@ export default function App() {
             <Redirect to={"/"} />
           </Switch>
         </main>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
