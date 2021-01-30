@@ -4,15 +4,6 @@
   box-sizing: border-box;
   font-family: Roboto;
 }
-.app {
-  display: flex;
-  flex-direction: column;
-
-  main {
-    display: flex;
-    flex-direction: row;
-  }
-}
 
 // COMPONENTS
 @import "./components/home/Home.scss";

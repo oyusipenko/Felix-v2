@@ -1,29 +1,20 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import NavMenu from "./NavMenu";
+import MobileDrawer from "./MobileDrawer";
+import ContentDrawer from "./ContentDrawer";
 import {
   AppBar,
   Toolbar,
   IconButton,
   useMediaQuery,
   useTheme,
-  Typography,
+  Drawer,
+  CssBaseline,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsIcon from "@material-ui/icons/Settings";
-import MobileDrawer from "./MobileDrawer";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-
-import ContentDrawer from "./ContentDrawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
 const drawerWidth = 240;
 
@@ -54,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Nav() {
-  // const { toggleNav } = useContext(AppContext);
+  const { toggleNav, viewNav } = useContext(AppContext);
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -84,7 +75,7 @@ export default function Nav() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      {!isMobile && (
+      {!isMobile && viewNav && (
         <Drawer
           className={classes.drawer}
           variant="permanent"
