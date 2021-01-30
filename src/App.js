@@ -14,7 +14,7 @@ import Calendar from "./components/calendar/Calenar";
 import { TodoContextProvider } from "./components/to-do/TodoContext";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
+import { Toolbar } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {

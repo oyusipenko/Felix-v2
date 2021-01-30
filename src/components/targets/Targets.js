@@ -1,5 +1,12 @@
 import React from "react";
+import MainContainer from "../includes/mainContainer/MainContainer";
 
 export default function Target() {
-  return <h1>Targets</h1>;
+  return (
+    <MainContainer>
+      <div className="targets">
+        <h1>Targets</h1>
+      </div>
+    </MainContainer>
+  );
 }

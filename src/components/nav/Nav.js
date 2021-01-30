@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import NavMenu from "./NavMenu";
 import MobileDrawer from "./MobileDrawer";
-import ContentDrawer from "./ContentDrawer";
+
 import {
   AppBar,
   Toolbar,
@@ -15,32 +15,16 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsIcon from "@material-ui/icons/Settings";
+import DesktopDrawer from "./DesktopDrawer";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
   },
   toolBar: {
     justifyContent: "space-between",
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerContainer: {
-    overflow: "auto",
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
   },
 }));
 
@@ -75,20 +59,7 @@ export default function Nav() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      {!isMobile && viewNav && (
-        <Drawer
-          className={classes.drawer}
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <Toolbar />
-          <div className={classes.drawerContainer}>
-            <ContentDrawer />
-          </div>
-        </Drawer>
-      )}
+      {!isMobile && viewNav && <DesktopDrawer />}
     </>
   );
 }

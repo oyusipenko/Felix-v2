@@ -10,10 +10,14 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 
 export default function ContentDrawer() {
+  const todoDrawerItems = [
+    ["Inbox Todos", "Done Todos"],
+    ["Trash", "Trash"],
+  ];
   return (
     <>
       <List>
-        {["Inbox Todos", "Done Todos"].map((text, index) => (
+        {todoDrawerItems[0].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -24,7 +28,7 @@ export default function ContentDrawer() {
       </List>
       <Divider />
       <List>
-        {["Trash"].map((text, index) => (
+        {todoDrawerItems[1].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
