@@ -1,11 +1,18 @@
 import React from "react";
+import Grid from "@material-ui/core/Grid";
 
-function MainContainer(props) {
+export default function MainContainer(props) {
   return (
-    <div className="main-container">
-      <div className="wrapper">{props.children}</div>
-    </div>
+    <Grid container direction="column" alignItems="center">
+      <Grid
+        container
+        xs={9}
+        direction="column"
+        justify="flex-start"
+        alignItems="center"
+      >
+        {props.children}
+      </Grid>
+    </Grid>
   );
 }
-
-export default MainContainer;

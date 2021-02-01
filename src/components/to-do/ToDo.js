@@ -4,10 +4,12 @@ import MainContainer from "../includes/mainContainer/MainContainer";
 import TodoDone from "./todoDone/TodoDone";
 import TodoInbox from "./todoInbox/TodoInbox";
 
+import Typography from "@material-ui/core/Typography";
+
 function ToDo() {
   return (
     <MainContainer>
-      <h1 className="todo__title">TO-DO</h1>
+      <Typography variant="h3">TO-DO</Typography>
       <Switch>
         <Route path="/todo/inbox">
           <TodoInbox />
