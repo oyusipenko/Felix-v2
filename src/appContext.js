@@ -1,34 +1,29 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+
 const AppContext = React.createContext();
 
-class AppContextProvider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = this.getDefaultState();
-  }
+function AppContextProvider(props) {
+  const [viewNav, setViewNav] = useState(true);
+  // const { appSection } = useParams();
+  // console.log(appSection);
+  const state = getDefaultState();
 
-  getDefaultState = () => {
+  function getDefaultState() {
     return {
-      viewNav: true,
-      toggleNav: this.toggleNav,
+      viewNav: viewNav,
+      toggleNav: toggleNav,
+      // appSection: appSection,
     };
-  };
-
-  toggleNav = () => {
-    this.setState((prevState) => {
-      return {
-        viewNav: !prevState.viewNav,
-      };
-    });
-  };
-
-  render() {
-    return (
-      <AppContext.Provider value={this.state}>
-        {this.props.children}
-      </AppContext.Provider>
-    );
   }
+
+  function toggleNav() {
+    setViewNav(!viewNav);
+  }
+
+  return (
+    <AppContext.Provider value={state}>{props.children}</AppContext.Provider>
+  );
 }
 
 export { AppContextProvider, AppContext };

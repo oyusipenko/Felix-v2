@@ -2,22 +2,18 @@ import React, { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import NavMenu from "./NavMenu";
 import MobileDrawer from "./MobileDrawer";
-
 import {
   AppBar,
   Toolbar,
   IconButton,
   useMediaQuery,
   useTheme,
-  Drawer,
   CssBaseline,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SettingsIcon from "@material-ui/icons/Settings";
 import DesktopDrawer from "./DesktopDrawer";
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

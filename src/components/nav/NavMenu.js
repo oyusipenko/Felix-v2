@@ -20,6 +20,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const menuItems = [
+  {
+    id: 0,
+    menuTitle: "Home",
+    pageURL: "/home",
+  },
+  {
+    id: 1,
+    menuTitle: "To-Do",
+    pageURL: "todo/inbox",
+  },
+  {
+    id: 2,
+    menuTitle: "Targets",
+    pageURL: "targets",
+  },
+  {
+    id: 3,
+    menuTitle: "Notes",
+    pageURL: "notes",
+  },
+  {
+    id: 4,
+    menuTitle: "Calendar",
+    pageURL: "calendar",
+  },
+];
+
 export default function NavMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [currentTab, setCurrentTab] = useState(0);
@@ -27,34 +55,6 @@ export default function NavMenu() {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const menuItems = [
-    {
-      id: 0,
-      menuTitle: "Home",
-      pageURL: "/",
-    },
-    {
-      id: 1,
-      menuTitle: "To-Do",
-      pageURL: "todo/inbox",
-    },
-    {
-      id: 2,
-      menuTitle: "Targets",
-      pageURL: "targets",
-    },
-    {
-      id: 3,
-      menuTitle: "Notes",
-      pageURL: "notes",
-    },
-    {
-      id: 4,
-      menuTitle: "Calendar",
-      pageURL: "calendar",
-    },
-  ];
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
