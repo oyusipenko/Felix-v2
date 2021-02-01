@@ -34,25 +34,27 @@ export default function App() {
         <Nav />
         <main className={classes.content}>
           <Toolbar />
+
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/todo/:todoSection">
+            <TodoContextProvider>
+              <ToDo />
+            </TodoContextProvider>
+          </Route>
+          <Route path="/targets">
+            <Targets />
+          </Route>
+          <Route path="/notes">
+            <Notes />
+          </Route>
+          <Route path="/calendar">
+            <Calendar />
+          </Route>
+          <Redirect to={"/"} />
           <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/todo/:todoSection">
-              <TodoContextProvider>
-                <ToDo />
-              </TodoContextProvider>
-            </Route>
-            <Route path="/targets">
-              <Targets />
-            </Route>
-            <Route path="/notes">
-              <Notes />
-            </Route>
-            <Route path="/calendar">
-              <Calendar />
-            </Route>
-            <Redirect to={"/"} />
+            <Route path="/:appSection" />
           </Switch>
         </main>
       </div>
