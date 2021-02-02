@@ -1,12 +1,17 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
+import { Container } from "@material-ui/core";
+
+import { makeStyles } from "@material-ui/core/styles";
 
 export default function MainContainer(props) {
-  return (
-    <Grid container direction="column" alignItems="center">
-      <Grid container xs={9} direction="column" alignItems="center">
-        {props.children}
-      </Grid>
-    </Grid>
-  );
+  const useStyles = makeStyles((theme) => ({
+    wrapper: {
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column",
+    },
+  }));
+
+  const classes = useStyles();
+  return <Container className={classes.wrapper}>{props.children}</Container>;
 }

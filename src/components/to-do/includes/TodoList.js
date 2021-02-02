@@ -11,7 +11,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 export default function TodoList() {
-  const { todos, completeTodo, todoSection } = useContext(TodoContext);
+  const { todos, completeTodo, todoSection, deleteTodo } = useContext(
+    TodoContext
+  );
   const useStyles = makeStyles((theme) => ({
     todoList: {
       width: "100%",
@@ -23,10 +25,13 @@ export default function TodoList() {
     todoItem: {
       borderBottom: "1px solid black",
     },
+    button: {
+      minWidth: "150px",
+    },
   }));
   const classes = useStyles();
 
-  const DoneItems = () => {
+  const InboxItems = () => {
     return todos.map((todo) => {
       if (todo.status === todoSection) {
         return (
@@ -43,7 +48,7 @@ export default function TodoList() {
     });
   };
 
-  const InboxItems = () => {
+  const DoneItems = () => {
     return todos.map((todo) => {
       if (todo.status === todoSection) {
         return (
@@ -53,7 +58,7 @@ export default function TodoList() {
               className={classes.button}
               variant="contained"
               color="primary"
-              onClick={() => completeTodo(todo.index)}
+              onClick={() => deleteTodo(todo.index)}
               startIcon={<DeleteForeverIcon />}
             >
               Delete todo
@@ -66,7 +71,7 @@ export default function TodoList() {
 
   return (
     <List className={classes.todoList}>
-      {todoSection != "inbox" ? <InboxItems /> : <DoneItems />}
+      {todoSection === "inbox" ? <InboxItems /> : <DoneItems />}
     </List>
   );
 }

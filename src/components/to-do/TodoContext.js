@@ -6,7 +6,7 @@ const TodoContext = React.createContext();
 function TodoContextProvider(props) {
   const [todos, setTodos] = useState([]);
   const { todoSection } = useParams();
-  const inputRef = useRef(null);
+  // const inputRef = useRef(null);
 
   const state = getDefaultState();
 
@@ -16,8 +16,9 @@ function TodoContextProvider(props) {
       addTodo: addTodo,
       completeTodo: completeTodo,
       isTodoCategoryEmpty: isTodoCategoryEmpty,
-      inputRef: inputRef,
+      // inputRef: inputRef,
       todoSection: todoSection,
+      deleteTodo: deleteTodo,
     };
   }
 
@@ -54,6 +55,16 @@ function TodoContextProvider(props) {
     const updatedTodos = todos.map((todo) => {
       if (todo.index === id) {
         return { ...todo, status: "done" };
+      }
+      return todo;
+    });
+    setTodos([...updatedTodos]);
+  }
+
+  function deleteTodo(id) {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.index === id) {
+        return { ...todo, status: "deleted" };
       }
       return todo;
     });
