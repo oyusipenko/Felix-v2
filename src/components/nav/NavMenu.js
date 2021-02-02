@@ -13,10 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-  },
-  toolBar: {
-    justifyContent: "space-between",
+    "& .MuiMenuItem-root": {
+      justifyContent: "center",
+    },
   },
 }));
 
@@ -90,6 +89,7 @@ export default function NavMenu() {
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
+            className={classes.root}
           >
             {menuItems.map((menuItem) => {
               const { id, menuTitle, pageURL } = menuItem;

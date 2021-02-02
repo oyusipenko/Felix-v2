@@ -4,7 +4,7 @@ import NoTodoBlock from "../includes/NoTodoBlock";
 import TodoList from "../includes/TodoList";
 
 import { Formik, Form, Field } from "formik";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, useTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import AddIcon from "@material-ui/icons/Add";
@@ -15,6 +15,10 @@ export default function TodoInbox() {
   const useStyles = makeStyles((theme) => ({
     form: {
       display: "flex",
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+        alignItems: "center",
+      },
       alignItems: "flex-end",
       width: "100%",
       "& .MuiInputBase-input": {
@@ -23,6 +27,10 @@ export default function TodoInbox() {
     },
     field: {
       width: "100%",
+      [theme.breakpoints.down("sm")]: {
+        marginRight: "0px",
+        marginBottom: "25px",
+      },
       marginRight: "50px",
     },
     button: {

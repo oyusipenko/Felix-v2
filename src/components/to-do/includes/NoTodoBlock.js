@@ -8,7 +8,8 @@ export default function NoTodoBlock(props) {
   const { isTodoCategoryEmpty, todoSection } = useContext(TodoContext);
   const useStyles = makeStyles((theme) => ({
     noTodo: {
-      marginTop: "40px",
+      marginTop: "25px",
+      textAlign: "center",
     },
   }));
 

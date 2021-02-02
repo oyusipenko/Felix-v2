@@ -9,106 +9,81 @@ import {
 } from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const menuHomeItems = [
-  [
-    {
-      id: 0,
-      menuTitle: "Home Item 1",
-      pageURL: "/1",
-    },
-    {
-      id: 1,
-      menuTitle: "Home Item 2",
-      pageURL: "/2",
-    },
-  ],
-  [
-    {
-      id: 2,
-      menuTitle: "Home Item 3",
-      pageURL: "/3",
-    },
-  ],
+  {
+    id: 0,
+    menuTitle: "Home Item 1",
+    pageURL: "/1",
+    icon: <MailIcon />,
+  },
+  {
+    id: 1,
+    menuTitle: "Home Item 2",
+    pageURL: "/2",
+    icon: <MailIcon />,
+  },
 ];
 const menuTodoItems = [
-  [
-    {
-      id: 0,
-      menuTitle: "Inbox Todos",
-      pageURL: "/todo/inbox",
-    },
-    {
-      id: 1,
-      menuTitle: "Done Todos",
-      pageURL: "/todo/done",
-    },
-  ],
-  [
-    {
-      id: 2,
-      menuTitle: "Trash",
-      pageURL: "/todo/trash",
-    },
-  ],
+  {
+    id: 0,
+    menuTitle: "Inbox Todos",
+    pageURL: "/todo/inbox",
+    icon: <InboxIcon />,
+  },
+  {
+    id: 1,
+    menuTitle: "Done Todos",
+    pageURL: "/todo/done",
+    icon: <DeleteIcon />,
+  },
+  //   id: 2,
+  //   menuTitle: "Trash",
+  //   pageURL: "/todo/trash",
+  // },
 ];
 const menuTargetsItems = [
-  [
-    {
-      id: 0,
-      menuTitle: "All Targets",
-      pageURL: "/targets/all",
-    },
-    {
-      id: 1,
-      menuTitle: "Done Targets",
-      pageURL: "/targets/done",
-    },
-  ],
-  [
-    {
-      id: 2,
-      menuTitle: "Trash",
-      pageURL: "/targets/trash",
-    },
-  ],
+  {
+    id: 0,
+    menuTitle: "Targets Item 1",
+    pageURL: "/targets/1",
+    icon: <MailIcon />,
+  },
+  {
+    id: 1,
+    menuTitle: "Targets Item 2",
+    pageURL: "/targets/2",
+    icon: <MailIcon />,
+  },
 ];
 const menuNotesItems = [
-  [
-    {
-      id: 0,
-      menuTitle: "All Notes",
-      pageURL: "/notes/all",
-    },
-  ],
-  [
-    {
-      id: 2,
-      menuTitle: "Trash",
-      pageURL: "/notes/trash",
-    },
-  ],
+  {
+    id: 0,
+    menuTitle: "Notes Item 1",
+    pageURL: "/notes/1",
+    icon: <MailIcon />,
+  },
+  {
+    id: 2,
+    menuTitle: "Notes Item 1",
+    pageURL: "/notes/2",
+    icon: <MailIcon />,
+  },
 ];
 const menuCalendarItems = [
-  [
-    {
-      id: 0,
-      menuTitle: "Calendar Item 1",
-      pageURL: "/calendar/1",
-    },
-    {
-      id: 1,
-      menuTitle: "Calendar Item 2",
-      pageURL: "/calendar/2",
-    },
-  ],
-  [
-    {
-      id: 2,
-      menuTitle: "Trash",
-      pageURL: "/calendar/trash",
-    },
-  ],
+  {
+    id: 0,
+    menuTitle: "Calendar Item 1",
+    pageURL: "/calendar/1",
+    icon: <MailIcon />,
+  },
+  {
+    id: 1,
+    menuTitle: "Calendar Item 2",
+    pageURL: "/calendar/2",
+    icon: <MailIcon />,
+  },
 ];
 
 export default function ContentDrawer() {
@@ -118,6 +93,23 @@ export default function ContentDrawer() {
   const handleMenu = (pageURL) => {
     history.replace("");
     history.push(pageURL);
+  };
+
+  const createButton = (obj) => {
+    const { id, menuTitle, pageURL, icon } = obj;
+    return (
+      <ListItem
+        key={id}
+        button
+        key={menuTitle}
+        onClick={() => {
+          handleMenu(pageURL);
+        }}
+      >
+        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemText primary={menuTitle} />
+      </ListItem>
+    );
   };
 
   let currentAppSection = [];
@@ -145,45 +137,9 @@ export default function ContentDrawer() {
 
   return (
     <>
-      <List>
-        {currentAppSection[0].map((obj) => {
-          const { id, menuTitle, pageURL } = obj;
-          return (
-            <ListItem
-              button
-              key={menuTitle}
-              onClick={() => {
-                handleMenu(pageURL);
-              }}
-            >
-              <ListItemIcon>
-                {id % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={menuTitle} />
-            </ListItem>
-          );
-        })}
-      </List>
+      <List>{createButton(currentAppSection[0])}</List>
       <Divider />
-      <List>
-        {currentAppSection[1].map((obj) => {
-          const { id, menuTitle, pageURL } = obj;
-          return (
-            <ListItem
-              button
-              key={menuTitle}
-              onClick={() => {
-                handleMenu(pageURL);
-              }}
-            >
-              <ListItemIcon>
-                {id % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={menuTitle} />
-            </ListItem>
-          );
-        })}
-      </List>
+      <List>{createButton(currentAppSection[1])}</List>
     </>
   );
 }
