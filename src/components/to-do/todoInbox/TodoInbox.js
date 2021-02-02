@@ -4,13 +4,13 @@ import NoTodoBlock from "../includes/NoTodoBlock";
 import TodoList from "../includes/TodoList";
 
 import { Formik, Form, Field } from "formik";
-import { Button, Typography, useTheme } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import AddIcon from "@material-ui/icons/Add";
 
 export default function TodoInbox() {
-  const { addTodo } = useContext(TodoContext);
+  const { addTodo, inputRef } = useContext(TodoContext);
 
   const useStyles = makeStyles((theme) => ({
     form: {
@@ -51,7 +51,11 @@ export default function TodoInbox() {
           todoName: "",
         }}
         onSubmit={(values, { setSubmitting }) => {
-          addTodo(values);
+          if (values.todoName) {
+            addTodo(values);
+            values.todoName = "";
+            setSubmitting(false);
+          }
           setSubmitting(false);
         }}
       >
@@ -63,6 +67,7 @@ export default function TodoInbox() {
               type="todoName"
               label="What todo?"
               name="todoName"
+              inputRef={inputRef}
             />
             <Button
               className={classes.button}
