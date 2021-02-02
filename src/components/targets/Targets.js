@@ -1,12 +1,11 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
 import MainContainer from "../includes/mainContainer/MainContainer";
 
 export default function Target() {
   return (
     <MainContainer>
-      <div className="targets">
-        <h1>Targets</h1>
-      </div>
+      <Typography variant="h3">Targets</Typography>
     </MainContainer>
   );
 }

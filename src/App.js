@@ -11,7 +11,7 @@ import Home from "./components/home/Home";
 import ToDo from "./components/to-do/ToDo";
 import Targets from "./components/targets/Targets";
 import Notes from "./components/notes/Notes";
-import Calendar from "./components/calendar/Calenar";
+import Calendar from "./components/calendar/Calendar";
 import { makeStyles } from "@material-ui/core/styles";
 import { Toolbar } from "@material-ui/core";
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
   },
 }));
 

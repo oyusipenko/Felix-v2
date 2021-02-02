@@ -1,12 +1,11 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
 import MainContainer from "../includes/mainContainer/MainContainer";
 
 export default function Calendar() {
   return (
     <MainContainer>
-      <div className="calendar">
-        <h1>Calendar</h1>
-      </div>
+      <Typography variant="h3">Calendar</Typography>
     </MainContainer>
   );
 }

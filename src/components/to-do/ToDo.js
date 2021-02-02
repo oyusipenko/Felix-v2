@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 function ToDo() {
   return (
     <MainContainer>
-      <Typography variant="h3">TO-DO</Typography>
+      <Typography variant="h3">To-Do</Typography>
       <Switch>
         <Route path="/todo/inbox">
           <TodoInbox />

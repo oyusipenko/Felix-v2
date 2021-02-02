@@ -1,12 +1,11 @@
 import React from "react";
+import Typography from "@material-ui/core/Typography";
 import MainContainer from "../includes/mainContainer/MainContainer";
 
 export default function Notes() {
   return (
     <MainContainer>
-      <div className="notes">
-        <h1>Notes</h1>
-      </div>
+      <Typography variant="h3">Notes</Typography>
     </MainContainer>
   );
 }

@@ -7,23 +7,29 @@ import { Formik, Form, Field } from "formik";
 import { Button, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
+import AddIcon from "@material-ui/icons/Add";
 
 export default function TodoInbox() {
-  const { addTodo, inputRef } = useContext(TodoContext);
+  const { addTodo } = useContext(TodoContext);
 
   const useStyles = makeStyles((theme) => ({
     form: {
       display: "flex",
-      alignItems: "center",
+      alignItems: "flex-end",
       width: "100%",
-      marginBottom: "25px",
+      "& .MuiInputBase-input": {
+        paddingLeft: "15px",
+      },
     },
     field: {
       width: "100%",
       marginRight: "50px",
     },
     button: {
-      height: "40px",
+      height: "32px",
+    },
+    todoList: {
+      width: "100%",
     },
   }));
 
@@ -32,7 +38,6 @@ export default function TodoInbox() {
   return (
     <>
       <Typography variant="h4">Inbox todos</Typography>
-
       <Formik
         initialValues={{
           todoName: "",
@@ -57,16 +62,14 @@ export default function TodoInbox() {
               color="primary"
               disabled={isSubmitting}
               onClick={submitForm}
+              startIcon={<AddIcon />}
             >
-              Submit
+              Add
             </Button>
           </Form>
         )}
       </Formik>
-
-      <NoTodoBlock>
-        <Typography variant="h5">There is no active todos...</Typography>
-      </NoTodoBlock>
+      <NoTodoBlock>There is no active todos...</NoTodoBlock>
       <TodoList />
     </>
   );
