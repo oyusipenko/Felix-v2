@@ -24,7 +24,7 @@ module.exports = (env) => {
     if (isProd) {
       plugins.push(
         new MiniCssExtractPlugin({
-          filename: "style-[hash:8].css",
+          filename: "style-[fullhash:8].css",
         })
       );
     }
@@ -38,7 +38,7 @@ module.exports = (env) => {
 
     output: {
       path: path.resolve(__dirname, "./dist"),
-      filename: isProd ? "[name]-[hash:8].bundle.js" : "[name].bundle.js",
+      filename: isProd ? "[name]-[fullhash:8].bundle.js" : "[name].bundle.js",
     },
 
     mode: isDev ? "development" : isProd && "production",
@@ -79,7 +79,7 @@ module.exports = (env) => {
               loader: "file-loader",
               options: {
                 outputPath: "images",
-                name: "[name]-[sha1:hash:7].[ext]",
+                name: "[name]-[sha1:fullhash:7].[ext]",
               },
             },
           ],
