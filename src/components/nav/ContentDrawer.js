@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import {
   List,
@@ -10,6 +10,7 @@ import {
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { AppContext } from "../../AppContext";
 
 const menuHomeItems = [
   {
@@ -38,10 +39,6 @@ const menuTodoItems = [
     pageURL: "/todo/done",
     icon: <DeleteIcon />,
   },
-  //   id: 2,
-  //   menuTitle: "Trash",
-  //   pageURL: "/todo/trash",
-  // },
 ];
 const menuTargetsItems = [
   {
@@ -88,6 +85,7 @@ const menuCalendarItems = [
 
 export default function ContentDrawer() {
   const history = useHistory();
+  const { currentSection } = useContext(AppContext);
 
   const handleMenu = (pageURL) => {
     history.replace("");
@@ -113,7 +111,7 @@ export default function ContentDrawer() {
 
   let currentAppSection = [];
 
-  switch (history.location.state) {
+  switch (currentSection) {
     case 0:
       currentAppSection = menuHomeItems;
       break;
@@ -133,6 +131,15 @@ export default function ContentDrawer() {
       currentAppSection = menuHomeItems;
       break;
   }
+
+  // useEffect(() => {
+  //   let pathName = history.location.pathname;
+  //   menuItems.map((obj) => {
+  //     if (pathName.includes(obj.pageURL)) {
+  //       currentAppSection = obj;
+  //     }
+  //   });
+  // });
 
   return (
     <>

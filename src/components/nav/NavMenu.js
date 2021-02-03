@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Tabs,
@@ -10,6 +10,7 @@ import {
   useTheme,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { AppContext } from "../../AppContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +24,7 @@ const menuItems = [
   {
     id: 0,
     menuTitle: "Home",
-    pageURL: "/home",
+    pageURL: "/",
   },
   {
     id: 1,
@@ -49,10 +50,11 @@ const menuItems = [
 
 export default function NavMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = useState(0); // namMenu`s own state
   const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
+  const { currentSection, changeCurrentSection } = useContext(AppContext);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleClick = (event) => {
@@ -66,15 +68,19 @@ export default function NavMenu() {
   const handleMenu = (id, pageURL) => {
     history.replace("");
     history.push(pageURL);
-    history.location.state = id;
-    sessionStorage.setItem("currentTab", id);
     setCurrentTab(id);
     setAnchorEl(null);
   };
 
   useEffect(() => {
-    setCurrentTab(Number.parseInt(sessionStorage.getItem("currentTab")));
-  }, []);
+    let pathName = history.location.pathname;
+    menuItems.map((obj) => {
+      if (pathName.includes(obj.pageURL)) {
+        changeCurrentSection(obj.id);
+        setCurrentTab(currentSection);
+      }
+    });
+  });
 
   return (
     <>

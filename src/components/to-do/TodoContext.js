@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 const TodoContext = React.createContext();
@@ -64,6 +64,7 @@ function TodoContextProvider(props) {
   }
 
   function isTodoCategoryEmpty(todoCategory) {
+    // console.log("123");
     return todos.find((todo) => {
       if (todo.status === todoCategory) {
         return true;

@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { TodoContextProvider } from "./components/to-do/TodoContext";
 import Nav from "./components/nav/Nav";
 import Home from "./components/home/Home";
@@ -25,11 +30,12 @@ export default function App() {
   return (
     <Router>
       <div className={classes.root}>
+        {/* <Route exact path="/"> */}
         <Nav />
         <main className={classes.content}>
           <Toolbar />
           <Switch>
-            <Route path="/home">
+            <Route exact path="/">
               <Home />
             </Route>
             <Route path="/todo/:todoSection">
@@ -47,7 +53,9 @@ export default function App() {
               <Calendar />
             </Route>
           </Switch>
+          {/* <Redirect to={"/home"} /> */}
         </main>
+        {/* </Route> */}
       </div>
     </Router>
   );
