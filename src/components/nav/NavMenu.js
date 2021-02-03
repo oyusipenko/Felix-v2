@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Tabs,
@@ -66,9 +66,15 @@ export default function NavMenu() {
   const handleMenu = (id, pageURL) => {
     history.replace("");
     history.push(pageURL);
+    history.location.state = id;
+    sessionStorage.setItem("currentTab", id);
     setCurrentTab(id);
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    setCurrentTab(Number.parseInt(sessionStorage.getItem("currentTab")));
+  }, []);
 
   return (
     <>

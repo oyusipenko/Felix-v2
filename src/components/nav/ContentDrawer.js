@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   List,
   Divider,
@@ -88,7 +88,6 @@ const menuCalendarItems = [
 
 export default function ContentDrawer() {
   const history = useHistory();
-  const { appSection } = useParams();
 
   const handleMenu = (pageURL) => {
     history.replace("");
@@ -114,20 +113,20 @@ export default function ContentDrawer() {
 
   let currentAppSection = [];
 
-  switch (appSection) {
-    case "home":
+  switch (history.location.state) {
+    case 0:
       currentAppSection = menuHomeItems;
       break;
-    case "todo":
+    case 1:
       currentAppSection = menuTodoItems;
       break;
-    case "targets":
+    case 2:
       currentAppSection = menuTargetsItems;
       break;
-    case "notes":
+    case 3:
       currentAppSection = menuNotesItems;
       break;
-    case "calendar":
+    case 4:
       currentAppSection = menuCalendarItems;
       break;
     default:

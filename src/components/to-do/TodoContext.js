@@ -26,12 +26,10 @@ function TodoContextProvider(props) {
 
   function getTodos() {
     setTodos(JSON.parse(localStorage.getItem("todos")));
-    console.log("getTodos");
   }
 
   function postTodos() {
     localStorage.setItem("todos", JSON.stringify(todos));
-    console.log("postTodos");
   }
 
   function addTodo(values) {
