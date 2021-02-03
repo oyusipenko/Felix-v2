@@ -32,6 +32,7 @@ export default function TodoList() {
   const classes = useStyles();
 
   const InboxItems = () => {
+    console.log(todos);
     return todos.map((todo) => {
       if (todo.status === todoSection) {
         return (
