@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TodoContext } from "../TodoContext";
 import {
   Button,
@@ -39,7 +39,7 @@ export default function TodoList() {
             <Checkbox
               name="checkedB"
               color="primary"
-              onClick={() => setTimeout(() => completeTodo(todo.index), 350)}
+              onClick={() => setTimeout(() => completeTodo(todo.index), 200)}
             />
             <ListItemText primary={todo.value} />
           </ListItem>

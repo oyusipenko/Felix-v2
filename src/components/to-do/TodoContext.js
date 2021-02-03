@@ -26,8 +26,8 @@ function TodoContextProvider(props) {
 
   function getTodos() {
     const storageTodos = JSON.parse(localStorage.getItem("todos"));
-    if (storageTodos == []) {
-      setTodos();
+    if (storageTodos) {
+      setTodos(storageTodos);
     }
   }
 
