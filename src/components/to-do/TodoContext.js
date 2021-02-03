@@ -67,7 +67,6 @@ function TodoContextProvider(props) {
   }
 
   function isTodoCategoryEmpty(todoCategory) {
-    // console.log("123");
     return todos.find((todo) => {
       if (todo.status === todoCategory) {
         return true;
