@@ -65,7 +65,7 @@ const menuNotesItems = [
     icon: <MailIcon />,
   },
   {
-    id: 2,
+    id: 1,
     menuTitle: "Notes Item 1",
     pageURL: "/notes/2",
     icon: <MailIcon />,

@@ -33,43 +33,30 @@ export default function MobileDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === "top" || anchor === "bottom",
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <ContentDrawer />
-    </div>
-  );
-
   return (
     <div>
-      {["left"].map((anchor) => {
-        console.log(anchor);
-        return (
-          <>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(anchor, true)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Drawer
-              anchor={anchor}
-              open={state[anchor]}
-              onClose={toggleDrawer(anchor, false)}
-            >
-              {list(anchor)}
-            </Drawer>
-          </>
-        );
-      })}
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        onClick={toggleDrawer("left", true)}
+      >
+        <MenuIcon />
+      </IconButton>
+      <Drawer
+        anchor={"left"}
+        open={state["left"]}
+        onClose={toggleDrawer("left", false)}
+      >
+        <div
+          className={clsx(classes.list)}
+          role="presentation"
+          onClick={toggleDrawer("left", false)}
+          onKeyDown={toggleDrawer("left", false)}
+        >
+          <ContentDrawer />
+        </div>
+      </Drawer>
     </div>
   );
 }

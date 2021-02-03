@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 const TodoContext = React.createContext();
@@ -15,11 +15,23 @@ function TodoContextProvider(props) {
       todos: todos,
       addTodo: addTodo,
       completeTodo: completeTodo,
-      isTodoCategoryEmpty: isTodoCategoryEmpty,
-      // inputRef: inputRef,
-      todoSection: todoSection,
       deleteTodo: deleteTodo,
+      isTodoCategoryEmpty: isTodoCategoryEmpty,
+      todoSection: todoSection,
+      getTodos: getTodos,
+      postTodos: postTodos,
+      // inputRef: inputRef,
     };
+  }
+
+  function getTodos() {
+    setTodos(JSON.parse(localStorage.getItem("todos")));
+    console.log("getTodos");
+  }
+
+  function postTodos() {
+    localStorage.setItem("todos", JSON.stringify(todos));
+    console.log("postTodos");
   }
 
   function addTodo(values) {
@@ -60,6 +72,7 @@ function TodoContextProvider(props) {
       }
     });
   }
+
   return (
     <TodoContext.Provider value={state}>{props.children}</TodoContext.Provider>
   );

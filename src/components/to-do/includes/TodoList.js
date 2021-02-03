@@ -26,7 +26,7 @@ export default function TodoList() {
       borderBottom: "1px solid black",
     },
     button: {
-      minWidth: "150px",
+      minWidth: "115px",
     },
   }));
   const classes = useStyles();
@@ -39,7 +39,7 @@ export default function TodoList() {
             <Checkbox
               name="checkedB"
               color="primary"
-              onClick={() => setTimeout(() => completeTodo(todo.index), 1000)}
+              onClick={() => setTimeout(() => completeTodo(todo.index), 350)}
             />
             <ListItemText primary={todo.value} />
           </ListItem>
@@ -61,7 +61,7 @@ export default function TodoList() {
               onClick={() => deleteTodo(todo.index)}
               startIcon={<DeleteForeverIcon />}
             >
-              Delete todo
+              Delete
             </Button>
           </ListItem>
         );
