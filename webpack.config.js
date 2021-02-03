@@ -45,7 +45,7 @@ module.exports = (env) => {
 
     devServer: {
       open: true,
-      publicPath: "./",
+      // publicPath: "./",
       historyApiFallback: true,
     },
 
