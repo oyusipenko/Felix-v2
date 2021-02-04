@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Tabs,
   Tab,
@@ -8,14 +8,14 @@ import {
   MenuItem,
   useMediaQuery,
   useTheme,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppContext } from '../../AppContext';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { AppContext } from "../../AppContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& .MuiMenuItem-root': {
-      justifyContent: 'center',
+    "& .MuiMenuItem-root": {
+      justifyContent: "center",
     },
   },
 }));
@@ -23,28 +23,28 @@ const useStyles = makeStyles((theme) => ({
 const menuItems = [
   {
     id: 0,
-    menuTitle: 'Home',
-    pageURL: '/',
+    menuTitle: "Home",
+    pageURL: "/",
   },
   {
     id: 1,
-    menuTitle: 'To-Do',
-    pageURL: 'todo/inbox',
+    menuTitle: "To-Do",
+    pageURL: "todo/inbox",
   },
   {
     id: 2,
-    menuTitle: 'Targets',
-    pageURL: 'targets',
+    menuTitle: "Targets",
+    pageURL: "targets",
   },
   {
     id: 3,
-    menuTitle: 'Notes',
-    pageURL: 'notes',
+    menuTitle: "Notes",
+    pageURL: "notes",
   },
   {
     id: 4,
-    menuTitle: 'Calendar',
-    pageURL: 'calendar',
+    menuTitle: "Calendar",
+    pageURL: "calendar",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function NavMenu() {
   const classes = useStyles();
   const theme = useTheme();
   const { currentSection, changeCurrentSection } = useContext(AppContext);
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -66,7 +66,7 @@ export default function NavMenu() {
   };
 
   const handleMenu = (id, pageURL) => {
-    history.replace('');
+    history.replace("");
     history.push(pageURL);
     setCurrentTab(id);
     setAnchorEl(null);

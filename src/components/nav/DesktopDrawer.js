@@ -1,7 +1,7 @@
-import React from 'react';
-import { Toolbar, Drawer } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import ContentDrawer from './ContentDrawer';
+import React from "react";
+import { Toolbar, Drawer } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import ContentDrawer from "./ContentDrawer";
 
 const drawerWidth = 240;
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   drawerContainer: {
-    overflow: 'auto',
+    overflow: "auto",
   },
 }));
 

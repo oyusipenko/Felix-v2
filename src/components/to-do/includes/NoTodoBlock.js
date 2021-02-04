@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
-import { TodoContext } from '../TodoContext';
+import { makeStyles } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
+import { TodoContext } from "../TodoContext";
 
 export default function NoTodoBlock(props) {
   const { isTodoCategoryEmpty, todoSection } = useContext(TodoContext);
   const useStyles = makeStyles((theme) => ({
     noTodo: {
-      marginTop: '25px',
-      textAlign: 'center',
+      marginTop: "25px",
+      textAlign: "center",
     },
   }));
 

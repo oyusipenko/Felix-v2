@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AppContext = React.createContext();
 
 function AppContextProvider(props) {
   const [viewNav, setViewNav] = useState(true);
   const [currentSection, setCurrentSection] = useState(0);
-  const state = getDefaultState();
+
+  function toggleNav() {
+    setViewNav(!viewNav);
+  }
+
+  function changeCurrentSection(value) {
+    setCurrentSection(value);
+  }
 
   function getDefaultState() {
     return {
@@ -15,14 +22,7 @@ function AppContextProvider(props) {
       changeCurrentSection,
     };
   }
-
-  function toggleNav() {
-    setViewNav(!viewNav);
-  }
-
-  function changeCurrentSection(value) {
-    setCurrentSection(value);
-  }
+  const state = getDefaultState();
 
   return (
     <AppContext.Provider value={state}>{props.children}</AppContext.Provider>
