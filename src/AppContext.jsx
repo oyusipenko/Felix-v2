@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const AppContext = React.createContext();
 
@@ -9,10 +9,10 @@ function AppContextProvider(props) {
 
   function getDefaultState() {
     return {
-      viewNav: viewNav,
-      toggleNav: toggleNav,
-      currentSection: currentSection,
-      changeCurrentSection: changeCurrentSection,
+      viewNav,
+      toggleNav,
+      currentSection,
+      changeCurrentSection,
     };
   }
 

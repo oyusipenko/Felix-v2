@@ -1,43 +1,43 @@
-import React, { useContext } from "react";
-import { TodoContext } from "../TodoContext";
-import NoTodoBlock from "../includes/NoTodoBlock";
-import TodoList from "../includes/TodoList";
+import React, { useContext } from 'react';
 
-import { Formik, Form, Field } from "formik";
-import { Button, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { TextField } from "formik-material-ui";
-import AddIcon from "@material-ui/icons/Add";
+import { Formik, Form, Field } from 'formik';
+import { Button, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { TextField } from 'formik-material-ui';
+import AddIcon from '@material-ui/icons/Add';
+import TodoList from '../includes/TodoList';
+import NoTodoBlock from '../includes/NoTodoBlock';
+import { TodoContext } from '../TodoContext';
 
 export default function TodoInbox() {
   const { addTodo, inputRef } = useContext(TodoContext);
 
   const useStyles = makeStyles((theme) => ({
     form: {
-      display: "flex",
-      [theme.breakpoints.down("sm")]: {
-        flexDirection: "column",
-        alignItems: "center",
+      display: 'flex',
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column',
+        alignItems: 'center',
       },
-      alignItems: "flex-end",
-      width: "100%",
-      "& .MuiInputBase-input": {
-        paddingLeft: "15px",
+      alignItems: 'flex-end',
+      width: '100%',
+      '& .MuiInputBase-input': {
+        paddingLeft: '15px',
       },
     },
     field: {
-      width: "100%",
-      [theme.breakpoints.down("sm")]: {
-        marginRight: "0px",
-        marginBottom: "25px",
+      width: '100%',
+      [theme.breakpoints.down('sm')]: {
+        marginRight: '0px',
+        marginBottom: '25px',
       },
-      marginRight: "50px",
+      marginRight: '50px',
     },
     button: {
-      height: "32px",
+      height: '32px',
     },
     todoList: {
-      width: "100%",
+      width: '100%',
     },
   }));
 
@@ -48,12 +48,12 @@ export default function TodoInbox() {
       <Typography variant="h4">Inbox todos</Typography>
       <Formik
         initialValues={{
-          todoName: "",
+          todoName: '',
         }}
         onSubmit={(values, { setSubmitting }) => {
           if (values.todoName) {
             addTodo(values);
-            values.todoName = "";
+            values.todoName = '';
             setSubmitting(false);
           }
           setSubmitting(false);

@@ -1,14 +1,14 @@
-import React from "react";
-import { Container } from "@material-ui/core";
+import React from 'react';
+import { Container } from '@material-ui/core';
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function MainContainer(props) {
   const useStyles = makeStyles((theme) => ({
     wrapper: {
-      display: "flex",
-      alignItems: "center",
-      flexDirection: "column",
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
     },
   }));
 

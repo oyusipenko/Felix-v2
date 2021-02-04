@@ -1,0 +1,20 @@
+{  
+  "[json]": {
+  "editor.quickSuggestions": {
+    "strings": false
+  },
+  "editor.suggest.insertMode": "replace"
+},
+"[javascript]": {
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[scss]": {
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"editor.formatOnSave": true,
+"editor.codeActionsOnSave": {
+  "source.fixAll": true
+}
+}

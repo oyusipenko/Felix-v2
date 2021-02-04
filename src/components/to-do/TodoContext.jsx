@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
 const TodoContext = React.createContext();
 
@@ -12,34 +12,34 @@ function TodoContextProvider(props) {
 
   function getDefaultState() {
     return {
-      todos: todos,
-      addTodo: addTodo,
-      completeTodo: completeTodo,
-      deleteTodo: deleteTodo,
-      isTodoCategoryEmpty: isTodoCategoryEmpty,
-      todoSection: todoSection,
-      getTodos: getTodos,
-      postTodos: postTodos,
+      todos,
+      addTodo,
+      completeTodo,
+      deleteTodo,
+      isTodoCategoryEmpty,
+      todoSection,
+      getTodos,
+      postTodos,
       // inputRef: inputRef,
     };
   }
 
   function getTodos() {
-    const storageTodos = JSON.parse(localStorage.getItem("todos"));
+    const storageTodos = JSON.parse(localStorage.getItem('todos'));
     if (storageTodos) {
       setTodos(storageTodos);
     }
   }
 
   function postTodos() {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem('todos', JSON.stringify(todos));
   }
 
   function addTodo(values) {
     const newTodo = {
       index: state.todos.length,
       value: values.todoName,
-      status: "inbox",
+      status: 'inbox',
       date: new Date(),
     };
     // inputRef.current.focus();
@@ -49,7 +49,7 @@ function TodoContextProvider(props) {
   function completeTodo(id) {
     const updatedTodos = todos.map((todo) => {
       if (todo.index === id) {
-        return { ...todo, status: "done" };
+        return { ...todo, status: 'done' };
       }
       return todo;
     });
@@ -59,7 +59,7 @@ function TodoContextProvider(props) {
   function deleteTodo(id) {
     const updatedTodos = todos.map((todo) => {
       if (todo.index === id) {
-        return { ...todo, status: "deleted" };
+        return { ...todo, status: 'deleted' };
       }
       return todo;
     });

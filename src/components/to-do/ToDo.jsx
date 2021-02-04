@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
-import { TodoContext } from "./TodoContext";
-import MainContainer from "../includes/mainContainer/MainContainer";
-import TodoDone from "./todoDone/TodoDone";
-import TodoInbox from "./todoInbox/TodoInbox";
-import Typography from "@material-ui/core/Typography";
+import React, { useContext, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
+import { TodoContext } from './TodoContext';
+import MainContainer from '../includes/mainContainer/MainContainer';
+import TodoDone from './todoDone/TodoDone';
+import TodoInbox from './todoInbox/TodoInbox';
 
 function ToDo() {
   const { todos, getTodos, postTodos } = useContext(TodoContext);

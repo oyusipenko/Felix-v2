@@ -1,31 +1,29 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env) => {
   const isDev = env.development;
   const isProd = env.production;
 
-  const getStyleLoaders = () => {
-    return [
-      isProd ? MiniCssExtractPlugin.loader : "style-loader",
-      "css-loader",
-    ];
-  };
+  const getStyleLoaders = () => [
+    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+    'css-loader',
+  ];
 
   const getPlugins = () => {
     const plugins = [
       new HtmlWebpackPlugin({
-        title: "Felix v2",
-        template: "src/index.html",
+        title: 'Felix v2',
+        template: 'src/index.html',
       }),
     ];
     if (isProd) {
       plugins.push(
         new MiniCssExtractPlugin({
-          filename: "style-[fullhash:8].css",
-        })
+          filename: 'style-[fullhash:8].css',
+        }),
       );
     }
     return plugins;
@@ -33,15 +31,15 @@ module.exports = (env) => {
 
   return {
     entry: {
-      main: path.resolve(__dirname, "src/index.js"),
+      main: path.resolve(__dirname, 'src/index.js'),
     },
 
     output: {
-      path: path.resolve(__dirname, "./dist"),
-      filename: isProd ? "[name]-[fullhash:8].bundle.js" : "[name].bundle.js",
+      path: path.resolve(__dirname, './dist'),
+      filename: isProd ? '[name]-[fullhash:8].bundle.js' : '[name].bundle.js',
     },
 
-    mode: isDev ? "development" : isProd && "production",
+    mode: isDev ? 'development' : isProd && 'production',
 
     devServer: {
       open: true,
@@ -57,7 +55,7 @@ module.exports = (env) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "babel-loader",
+              loader: 'babel-loader',
             },
           ],
         },
@@ -69,17 +67,17 @@ module.exports = (env) => {
         // SCSS
         {
           test: /\.s[ca]ss$/,
-          use: [...getStyleLoaders(), "sass-loader"],
+          use: [...getStyleLoaders(), 'sass-loader'],
         },
         // IMAGES
         {
           test: /\.(png|jpe?g|gif)$/,
           use: [
             {
-              loader: "file-loader",
+              loader: 'file-loader',
               options: {
-                outputPath: "images",
-                name: "[name]-[sha1:fullhash:7].[ext]",
+                outputPath: 'images',
+                name: '[name]-[sha1:fullhash:7].[ext]',
               },
             },
           ],
@@ -89,10 +87,10 @@ module.exports = (env) => {
           test: /\.(ttf|otf|eot|woff|woff2)$/,
           use: [
             {
-              loader: "file-loader",
+              loader: 'file-loader',
               options: {
-                outputPath: "fonts",
-                name: "[name].[ext]",
+                outputPath: 'fonts',
+                name: '[name].[ext]',
               },
             },
           ],
