@@ -25,7 +25,6 @@ export default function App() {
   return (
     <Router>
       <div className={classes.root}>
-        {/* <Route exact path="/"> */}
         <Nav />
         <main className={classes.content}>
           <Toolbar />
@@ -48,9 +47,7 @@ export default function App() {
               <Calendar />
             </Route>
           </Switch>
-          {/* <Redirect to={"/home"} /> */}
         </main>
-        {/* </Route> */}
       </div>
     </Router>
   );

@@ -23,7 +23,7 @@ module.exports = (env) => {
       plugins.push(
         new MiniCssExtractPlugin({
           filename: "style-[fullhash:8].css",
-        }),
+        })
       );
     }
     return plugins;
@@ -31,7 +31,7 @@ module.exports = (env) => {
 
   return {
     entry: {
-      main: path.resolve(__dirname, "src/index.jsx"),
+      main: path.resolve(__dirname, "src/index.js"),
     },
 
     output: {
