@@ -31,7 +31,7 @@ module.exports = (env) => {
 
   return {
     entry: {
-      main: path.resolve(__dirname, 'src/index.js'),
+      main: path.resolve(__dirname, 'src/index.jsx'),
     },
 
     output: {
@@ -51,7 +51,7 @@ module.exports = (env) => {
       rules: [
         // JS
         {
-          test: /\.js$/,
+          test: /\.(js|.jsx)/,
           exclude: /node_modules/,
           use: [
             {
@@ -99,5 +99,9 @@ module.exports = (env) => {
     },
 
     plugins: [...getPlugins(), new CleanWebpackPlugin()],
+
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
   };
 };
