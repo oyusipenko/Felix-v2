@@ -14,7 +14,6 @@ function ToDo() {
   }, []);
 
   useEffect(() => {
-    console.log("post");
     postTodos();
   }, [todos]);
 
