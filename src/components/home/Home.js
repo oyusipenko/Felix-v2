@@ -5,7 +5,7 @@ import MainContainer from "../includes/mainContainer/MainContainer";
 export default function Home() {
   return (
     <MainContainer>
-      <Typography variant="h3">Home test-branch</Typography>
+      <Typography variant="h3">Home test-branch 1</Typography>
     </MainContainer>
   );
 }
